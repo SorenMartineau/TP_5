@@ -58,6 +58,33 @@ int humeurFruits(int quantite){
     }
 }
 
+void afficherBarre(int valeur, int max){
+    if (max <= 0){
+        max = 1;
+    }
+    if (valeur < 0){
+        printf("valeur trop petite\n");
+        return;
+    }
+    else if (valeur > max){
+        printf("valeur trop grande\n");
+        return;
+    }
+
+    int case_pleines = (valeur*10)/max;
+
+    for (int i = 0; i < case_pleines; i++){
+        printf("█");
+    }
+    for (case_pleines; case_pleines < 10; case_pleines++){
+        printf("▒");
+    }
+
+    printf("\n");
+
+
+}
+
 
 Consommation ajoutConsommation(Consommation c){
 
@@ -121,6 +148,7 @@ void afficherResume(Consommation c){
     char face_bonbons[100];
     char face_legumes[100];
     char face_fruits[100];
+    int max = 10;
 
     switch (humeurBonbons(c.bonbons))
     {
@@ -172,13 +200,20 @@ void afficherResume(Consommation c){
 
     printf("========== Resumé du jour ==========\n");
 
-    printf("Eau      : %d 💧\n", c.eau);
-    printf("café     : %d ☕\n", c.cafe);
-    printf("Bonbons  : %d 🍬 %s\n", c.bonbons, face_bonbons);
-    printf("gâteau   : %d 🍰\n", c.gateaux);
-    printf("Légumes  : %d 🥦 %s\n", c.legumes, face_legumes);
-    printf("Fruits   : %d 🍎 %s\n", c.fruits, face_fruits);
-    printf("protéines: %d 🍗\n", c.proteines);
+    printf("Eau      : %d 💧    ", c.eau);
+    afficherBarre(c.eau, max);
+    printf("café     : %d ☕    ", c.cafe);
+    afficherBarre(c.cafe, max);
+    printf("Bonbons  : %d 🍬 %s ", c.bonbons, face_bonbons);
+    afficherBarre(c.bonbons, max);
+    printf("gâteau   : %d 🍰    ", c.gateaux);
+    afficherBarre(c.gateaux, max);
+    printf("Légumes  : %d 🥦 %s ", c.legumes, face_legumes);
+    afficherBarre(c.legumes, max);
+    printf("Fruits   : %d 🍎 %s ", c.fruits, face_fruits);
+    afficherBarre(c.fruits, max);
+    printf("protéines: %d 🍗    ", c.proteines);
+    afficherBarre(c.proteines, max);
 
     printf("====================================\n\n");    
 

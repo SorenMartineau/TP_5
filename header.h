@@ -20,5 +20,6 @@ void afficherResume(Consommation c);
 int humeurBonbons(int quantite);
 int humeurlegumes(int quantite);
 int humeurFruits(int quantite);
+void afficherBarre(int valeur, int max);
 
 #endif
