@@ -6,7 +6,6 @@
 #include <locale.h>
 
 void afficherMenu(){
-    // affiche le menu
 
     printf("========== suivi de consommation ==========\n");
     printf("1. Ajouter une consommation\n");
@@ -45,6 +44,7 @@ Consommation ajoutConsommation(Consommation c){
     while (quantite < 0){
         printf("donnez la quantité: ");
         scanf("%d", &quantite);
+        printf("\n");
     }
 
     switch (choix)
@@ -75,5 +75,21 @@ Consommation ajoutConsommation(Consommation c){
     }
 
     return c;
+
+}
+
+void afficherResume(Consommation c){
+
+    printf("========== Resumé du jour ==========\n");
+
+    printf("Eau      : %d 💧\n", c.eau);
+    printf("café     : %d ☕\n", c.cafe);
+    printf("Bonbons  : %d 🍬\n", c.bonbons);
+    printf("gâteau   : %d 🍰\n", c.gateaux);
+    printf("Légumes  : %d 🥦\n", c.legumes);
+    printf("Fruits   : %d 🍎\n", c.fruits);
+    printf("protéines: %d 🍗\n", c.proteines);
+
+    printf("====================================\n\n");    
 
 }

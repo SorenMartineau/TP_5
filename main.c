@@ -22,9 +22,13 @@ int main()
         afficherMenu();
         printf("votre choix: ");
         scanf("%d", &choix);
+        printf("\n");
 
         if (choix == 1){
             c = ajoutConsommation(c);
+        }
+        else if (choix == 2){
+            afficherResume(c);
         }
     }
 
