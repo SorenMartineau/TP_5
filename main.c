@@ -4,7 +4,6 @@
 
 #include <windows.h>
 #include <locale.h>
-// A METTRE DANS LE MAIN :
 
 
 
@@ -13,9 +12,10 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    setlocale(LC_ALL, ".UTF-8"); // ou ".65001" si ".UTF-8" ne passe pas
+    setlocale(LC_ALL, ".UTF-8");
 
     Consommation c = initConsommation();
+    Objectif o = {8,5,3,2};
 
     int choix = -1;
     while (choix != 0){
@@ -29,6 +29,9 @@ int main()
         }
         else if (choix == 2){
             afficherResume(c);
+        }
+        else if (choix == 3){
+            afficherObjectifsEtScore(c, o);
         }
     }
 

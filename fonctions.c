@@ -10,6 +10,7 @@ void afficherMenu(){
     printf("========== suivi de consommation ==========\n");
     printf("1. Ajouter une consommation\n");
     printf("2. Afficher le resumé du jour\n");
+    printf("3. Afficher les objectifs et le score\n");
     printf("0. Quitter\n");     
 }
 
@@ -215,6 +216,100 @@ void afficherResume(Consommation c){
     printf("protéines: %d 🍗    ", c.proteines);
     afficherBarre(c.proteines, max);
 
+    printf("====================================\n\n");    
+
+}
+
+void calculerScoreSante(Consommation c, Objectif o){
+
+    int score = 50;
+
+    if (c.eau >= o.eau){
+        score += 10;
+    }
+    if (c.legumes >= o.legumes){
+        score += 10;
+    }
+    if (c.fruits >= o.fruits){
+        score += 10;
+    }
+    if (c.proteines >= o.proteines){
+        score += 10;
+    }
+
+    if (c.bonbons > 5){
+        if (c.bonbons > 20){
+            score -= 15;
+        }
+        else{
+            score -= c.bonbons-5;
+        }
+    }
+
+    if (c.cafe > 3){
+        if (c.cafe > 13){
+            score -= 20;
+        }
+        else{
+            score -= 2*c.cafe-6;
+        }
+    }
+
+    if (score < 0){
+        score = 0;
+    }
+    else if (score > 100){
+        score = 100;
+    }
+
+    printf("score de sante du jour: %d/100\n", score);
+
+}
+
+void afficherObjectifsEtScore(Consommation c, Objectif o){
+
+
+    char check[100];
+
+    printf("========== Objectifs du jour ==========\n");
+
+    if (c.eau >= o.eau){
+        strcpy(check,"✅");
+    }
+    else{
+        strcpy(check,"❌"); 
+    }
+
+    printf("Eau      : %d %s\n", o.eau, check);
+
+    if (c.legumes >= o.legumes){
+        strcpy(check,"✅");
+    }
+    else{
+        strcpy(check,"❌"); 
+    }
+
+    printf("Légumes  : %d %s\n", o.legumes, check);
+
+    if (c.fruits >= o.fruits){
+        strcpy(check,"✅");
+    }
+    else{
+        strcpy(check,"❌"); 
+    }
+
+    printf("Fruits   : %d %s\n", o.fruits, check);
+
+    if (c.proteines >= o.proteines){
+        strcpy(check,"✅");
+    }
+    else{
+        strcpy(check,"❌"); 
+    }
+
+    printf("protéines: %d %s\n", o.proteines, check);
+
+    calculerScoreSante(c, o);
     printf("====================================\n\n");    
 
 }
