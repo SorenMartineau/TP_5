@@ -15,13 +15,20 @@ int main()
 
     setlocale(LC_ALL, ".UTF-8"); // ou ".65001" si ".UTF-8" ne passe pas
 
-    Consommation c;
+    Consommation c = initConsommation();
 
     int choix = -1;
     while (choix != 0){
         afficherMenu();
+        printf("votre choix: ");
         scanf("%d", &choix);
 
+        if (choix == 1){
+            c = ajoutConsommation(c);
+        }
     }
+
+
+
     return 0;
 }
